@@ -38,27 +38,34 @@ def main():
     )
     net.to(device)
 
+    optimizer = torch.optim.AdamW(
+        net.parameters(),
+        lr=HYPERPARAMS["learning_rate"],
+        weight_decay=HYPERPARAMS["weight_decay"],
+    )
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+        optimizer, T_max=HYPERPARAMS["epochs"]
+    )
+    criterion = nn.CrossEntropyLoss()
+
     train(
         net,
         device,
         trainloader,
         testloader,
         HYPERPARAMS,
-        criterion=nn.CrossEntropyLoss(),
-        optimizer=optim.AdamW(
-            net.parameters(),
-            lr=HYPERPARAMS["learning_rate"],
-            weight_decay=HYPERPARAMS["weight_decay"],
-        ),
+        criterion=criterion,
+        optimizer=optimizer,
         wandb_run=wandb_run,
         log_interval=HYPERPARAMS["log_interval"],
+        scheduler=scheduler,
     )
     test(
         net,
         testloader,
         device,
         wandb_run=wandb_run,
-        criterion=nn.CrossEntropyLoss(),
+        criterion=criterion,
     )
 
     wandb.finish()

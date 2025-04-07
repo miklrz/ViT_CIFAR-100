@@ -11,6 +11,7 @@ def train(
     criterion,
     optimizer,
     wandb_run,
+    scheduler,
     log_interval=2000,
     eval_interval=5,
 ):
@@ -58,6 +59,8 @@ def train(
                 running_loss = 0.0
                 correct = 0
                 total = 0
+
+        scheduler.step()
 
         if (epoch + 1) % eval_interval == 0:
             test_accuracy = test(

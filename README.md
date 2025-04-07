@@ -1,1 +1,1 @@
-# ViT_CIFAR-10
+# ViT_CIFAR-100

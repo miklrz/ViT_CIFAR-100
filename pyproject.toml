@@ -1,5 +1,5 @@
 [project]
-name = "vit-cifar-10"
+name = "vit-cifar-100"
 version = "0.1.0"
 description = ""
 authors = [
