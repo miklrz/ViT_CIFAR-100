@@ -12,7 +12,8 @@ HYPERPARAMS = {
     "mlp_ratio": 4,
     "qkv_bias": True,
     "drop_rate": 0.5,
-    "log_interval": 20,
+    "log_interval": 200,
+    "patience": 3,
 }
 
 PATHS = {

@@ -59,6 +59,7 @@ def main():
         wandb_run=wandb_run,
         log_interval=HYPERPARAMS["log_interval"],
         scheduler=scheduler,
+        patience=HYPERPARAMS["patience"],
     )
     test(
         net,

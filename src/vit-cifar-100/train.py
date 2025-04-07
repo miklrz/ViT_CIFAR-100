@@ -14,7 +14,10 @@ def train(
     scheduler,
     log_interval=2000,
     eval_interval=5,
+    patience=3,
 ):
+    best_accuracy = 0.0
+    epochs_no_improve = 0
     net.train()
     for epoch in range(HYPERPARAMS["epochs"]):
         running_loss = 0.0
@@ -67,6 +70,17 @@ def train(
                 net, testloader, device, wandb_run, criterion=criterion
             )
             tqdm.write(f"[Epoch {epoch+1}] Test Accuracy: {test_accuracy:.2f}%")
+
+            if test_accuracy > best_accuracy:
+                best_accuracy = test_accuracy
+                epochs_no_improve = 0
+            else:
+                epochs_no_improve += 1
+                tqdm.write(f"No improvement for {epochs_no_improve} epoch(s)")
+
+            if epochs_no_improve >= patience:
+                print(f"Early stopping triggered at epoch {epoch+1}")
+                break
 
     print("Finished Training")
 
