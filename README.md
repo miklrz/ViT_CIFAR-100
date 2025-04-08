@@ -32,7 +32,7 @@ ViT is a deep learning model that applies the Transformer architecture, original
 │       └── __init__.py
 ```
 
-## 📦 Installation
+## Installation
 
 > This project uses [Poetry](https://python-poetry.org/) for dependency management.
 
@@ -88,16 +88,16 @@ WANDB_CONFIG = {
 
 To enable it, make sure you're logged into `wandb` CLI.
 
-## 🔧 Requirements
+## Requirements
 
 All dependencies are listed in `pyproject.toml`
 
-## ✍️ Author
+## Author
 
 - **Mikhail Arzhanov**
 - [GitHub](https://github.com/miklrz)
 - [Telegram](https://t.me/hxastur)
 
-## 📜 License
+## License
 
 This project is open-source and free to use under the MIT License.
